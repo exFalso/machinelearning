@@ -1,0 +1,23 @@
+import Data.BinTree.*
+import Data.List.*
+
+% inc = @(x) x + 1
+% id = @(x) x
+% n1 = BinTreeLeaf (1)
+% n2 = BinTreeLeaf (2)
+% b = BinTreeBranch (3, n1, n2)
+% res = b.fold (@(a,b,c) a + b + c, id)
+% b.m_fmap (inc)
+% res = b.fold (@(a,b,c) a + b + c, id)
+
+l = ListCons (1, ListCons (5, ListCons (3, ListEmpty)))
+
+% res = l.foldl (@(a,b) a + b, 0)
+
+% l.m_fmap (inc)
+
+% res = l.foldl (@(a,b) a + b, 0)
+
+res = List.mreturn (1)
+l = ListEmpty
+res2 = res.bind (@(x) l)
