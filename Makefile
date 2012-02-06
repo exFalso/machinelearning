@@ -1,2 +1,2 @@
 all:
-	matlab < quick
+	mcc -m main.m

@@ -1,6 +1,6 @@
 classdef BinTreeLeaf < Data.BinTree.BinTree
 
-    properties (SetAccess = private)
+    properties (GetAccess = private, SetAccess = private)
         d_leafValue
     end
 
@@ -9,12 +9,12 @@ classdef BinTreeLeaf < Data.BinTree.BinTree
             instance.d_leafValue = value;
         end
 
-        function result = fmap (this, fun)
+        function result = fmap_ (this, fun)
             result = Data.BinTree.BinTreeLeaf (fun ...
                                                (this.d_leafValue));
         end
 
-        function m_fmap (this, fun)
+        function m_fmap_ (this, fun)
         end
 
         function result = fold (this, branchFunction, leafFunction)

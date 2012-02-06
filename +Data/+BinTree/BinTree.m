@@ -2,8 +2,8 @@ classdef BinTree < handle & Data.Functor
 
     methods (Abstract)
         % Functor instance
-        result = fmap (fun)
-        m_fmap (fun)
+        result = fmap_ (fun)
+        m_fmap_ (fun)
 
         % folds the tree using two handles
         result = fold (branchFunction, leafFunction)

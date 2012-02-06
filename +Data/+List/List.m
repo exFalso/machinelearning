@@ -1,9 +1,9 @@
-classdef List < handle & Data.Functor & Data.Monad
+classdef List < handle & Data.Functor & Control.Monad.Monad
 
     methods (Abstract)
         % Functor instance
-        result = fmap (fun)
-        m_fmap (fun)
+        result = fmap_ (fun)
+        m_fmap_ (fun)
 
         % foldrs the list using the handle and a default
         result = foldr (consFunction, default)
@@ -16,6 +16,10 @@ classdef List < handle & Data.Functor & Data.Monad
     end
 
     methods
+        function instance = List ()
+            instance = instance@Data.Functor ();
+        end
+        
         % concatenate a list of lists (COPY)
         function result = concat (this)
             result = this.foldl (@foldOne, Data.List.ListEmpty ());

@@ -4,11 +4,12 @@ classdef ListEmpty < Data.List.List
         function instance = ListEmpty
         end
 
-        function result = fmap (this, fun)
+        function result = fmap_ (this, fun)
             result = Data.List.ListEmpty ();
         end
 
-        function m_fmap (this, fun)
+        function result = m_fmap_ (this, fun)
+            result = this;
         end
 
         function result = foldr (this, consFunction, default)

@@ -5,11 +5,11 @@ classdef Nothing < Data.Maybe.Maybe
         end
 
         % functor instance
-        function result = fmap (this, fun)
+        function result = fmap_ (this, fun)
             result = Nothing ();
         end
 
-        function m_fmap (this, fun)
+        function m_fmap_ (this, fun)
         end
 
         function result = maybe (this, default, justFunction)

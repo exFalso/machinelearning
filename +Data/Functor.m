@@ -1,9 +1,24 @@
+% (Functor f) => f :: * -> *
 classdef Functor < handle
-    methods (Abstract)
-        % functor map, builds up new structures
-        result = fmap (this, fun)
+    
+    properties (GetAccess = public, SetAccess = protected)
+        fmap
+        m_fmap
+    end
+    
+    methods
+        function instance = Functor ()
+            instance.fmap = Data.FunHandle.lam1 * @instance.fmap_;
+            instance.m_fmap = Data.FunHandle.lam1 * @instance.m_fmap_;
+        end
+    end
 
-        % mutating version
-        m_fmap (this, fun)
+    methods (Abstract)
+        % fmap :: ({f a}, a -> b) -> f b
+        result = fmap_ (fun)
+        
+        % mutating version (returns reference to self)
+        % m_fmap :: ({f a}, a -> b) -> f b
+        result = m_fmap_ (fun)
     end
 end

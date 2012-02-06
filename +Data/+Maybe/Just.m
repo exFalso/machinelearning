@@ -9,12 +9,13 @@ classdef Just < Data.Maybe.Maybe
             instance.d_value = value;
         end
 
-        function result = fmap (this, fun)
-            result = Just (fun (this.d_value));
+        function result = fmap_ (this, fun)
+            result = Data.Maybe.Just (fun (this.d_value));
         end
 
-        function m_fmap (this, fun)
+        function result = m_fmap_ (this, fun)
             this.d_value = fun (this.d_value);
+            result = this;
         end
 
         function result = maybe (this, default, justFunction)

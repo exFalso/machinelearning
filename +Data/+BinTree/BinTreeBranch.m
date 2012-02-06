@@ -1,6 +1,6 @@
 classdef BinTreeBranch < Data.BinTree.BinTree
 
-    properties (SetAccess = private)
+    properties (GetAccess = private, SetAccess = private)
         d_branchValue
         d_left
         d_right
@@ -13,17 +13,17 @@ classdef BinTreeBranch < Data.BinTree.BinTree
             instance.d_right = rightTree;
         end
 
-        function result = fmap (this, fun)
-            left = this.d_left.fmap (fun);
-            right = this.d_right.fmap (fun);
+        function result = fmap_ (this, fun)
+            left = this.d_left.fmap_ (fun);
+            right = this.d_right.fmap_ (fun);
             value = fun (this.d_branchValue);
             result = Data.BinTree.BinTreeBranch (value, left, right);
         end
 
-        function m_fmap (this, fun)
+        function m_fmap_ (this, fun)
             this.d_branchValue = fun (this.d_branchValue);
-            this.d_left.m_fmap (fun);
-            this.d_right.m_fmap (fun);
+            this.d_left.m_fmap_ (fun);
+            this.d_right.m_fmap_ (fun);
         end
 
         function result = fold (this, branchFunction, leafFunction)
